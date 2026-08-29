@@ -1,6 +1,6 @@
-fastapi
+fastapi[standard]
 uvicorn
-pydantic
-joblib
 pandas
+numpy
 scikit-learn
+joblib
