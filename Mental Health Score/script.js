@@ -280,9 +280,9 @@
       renderResult(data.predicted_mental_health_score);
     } catch (err) {
       renderError(
-        "Can't reach the server",
-        `Couldn't connect to ${API_BASE}. Make sure the backend is running (uvicorn main:app --port 2200 --reload) and reachable from this page.`
-      );
+  "Can't reach the server",
+  "Couldn't connect to the prediction server. Please try again."
+);
     } finally {
       setSubmitting(false);
     }
