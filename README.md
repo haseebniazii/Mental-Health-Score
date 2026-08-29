@@ -8,70 +8,97 @@
   <img src="https://img.shields.io/badge/Python-3.12-blue?style=for-the-badge&logo=python">
   <img src="https://img.shields.io/badge/Scikit--Learn-ML-orange?style=for-the-badge&logo=scikit-learn">
   <img src="https://img.shields.io/badge/FastAPI-Backend-green?style=for-the-badge&logo=fastapi">
-  <img src="https://img.shields.io/badge/HTML-CSS-JS-red?style=for-the-badge">
-  <img src="https://img.shields.io/badge/Status-Completed-success?style=for-the-badge">
+  <img src="https://img.shields.io/badge/GitHub%20Pages-Frontend-black?style=for-the-badge&logo=github">
 </p>
 
 ---
 
 ## 📌 About The Project
 
-**Mental Health Score Prediction** is a Machine Learning powered web application that predicts a mental health score based on lifestyle, social media usage, and other relevant input factors.
+**Mental Health Score Prediction** is a Machine Learning web application that predicts a mental health score based on lifestyle habits, academic activities, screen time, social media usage, sleep, physical activity, and perceived stress.
 
-The project combines a trained Machine Learning model with a **FastAPI backend** and a **HTML, CSS, and JavaScript frontend**.
+The project combines:
 
-Users can enter the required information through the web interface, and the application sends the data to the backend, where the trained model generates a prediction.
+* 🤖 Machine Learning
+* ⚡ FastAPI backend
+* 🌐 HTML, CSS & JavaScript frontend
+* 🐙 GitHub Pages deployment
+
+Users enter their information through the web interface, and the data is sent to the FastAPI backend. The trained Machine Learning model processes the input and returns a predicted mental health score.
+
+> ⚠️ This project is for educational and demonstration purposes only. It is not a medical or clinical assessment.
+
+---
+
+## 🌐 Live Demo
+
+### Frontend
+
+🔗 **Live Website:**
+
+https://haseebniazii.github.io/Mental-Health-Score/
+
+The frontend is hosted using **GitHub Pages**.
+
+### Backend
+
+The FastAPI backend is designed to receive prediction requests from the frontend and run the trained Machine Learning model.
 
 ---
 
 ## 🎯 Project Objective
 
-The main objective of this project is to build an end-to-end Machine Learning application that can:
+The main objective of this project is to demonstrate a complete **Machine Learning → API → Web Application** workflow.
 
-* Analyze relevant mental health factors
+The application can:
+
+* Analyze lifestyle and digital habits
 * Process user input
 * Predict a mental health score
 * Provide predictions through a web interface
 * Connect a Machine Learning model with a REST API
-* Demonstrate the complete ML-to-Web workflow
+* Demonstrate an end-to-end ML deployment workflow
 
 ---
 
-## 🧠 Machine Learning
+## 🧠 Machine Learning Workflow
 
 The Machine Learning workflow includes:
 
-* Data Loading
-* Data Understanding
-* Data Cleaning
-* Exploratory Data Analysis
-* Feature Engineering
-* Categorical Encoding
-* Numerical Preprocessing
-* Train-Test Split
-* Model Training
-* Model Evaluation
-* Hyperparameter Tuning
-* Model Saving
+1. Data Loading
+2. Data Understanding
+3. Data Cleaning
+4. Exploratory Data Analysis
+5. Feature Engineering
+6. Categorical Encoding
+7. Numerical Preprocessing
+8. Train-Test Split
+9. Model Training
+10. Model Evaluation
+11. Hyperparameter Tuning
+12. Model Saving
 
 The trained model is saved as:
 
 ```text
-model.pkl
+Mental_Health_Model.pkl
 ```
 
 ---
 
-## 🤖 Model
+## 🤖 Machine Learning Model
 
-The application uses a trained Scikit-Learn Machine Learning model for predicting the mental health score.
+The application uses a trained **Scikit-Learn regression model** to predict a mental health score.
 
-The saved model is loaded by the FastAPI backend and used to generate predictions from user input.
+The saved model is loaded by the FastAPI backend.
+
+Example:
 
 ```python
 import joblib
 
-model = joblib.load("model.pkl")
+model = joblib.load("Mental_Health_Model.pkl")
+
 prediction = model.predict(data)
 ```
 
@@ -79,36 +106,36 @@ prediction = model.predict(data)
 
 ## ⚡ FastAPI Backend
 
-**FastAPI** is used to create the backend API that connects the frontend with the Machine Learning model.
+**FastAPI** is used to create the REST API that connects the frontend with the Machine Learning model.
 
-### API responsibilities
+### API Responsibilities
 
-* Load the trained model
 * Receive user input
 * Validate input data
-* Send data to the ML model
-* Generate predictions
-* Return prediction results to the frontend
+* Load the trained model
+* Process prediction data
+* Generate the mental health score
+* Return the prediction to the frontend
 
-Example API endpoint:
+### Prediction Endpoint
 
 ```text
 POST /predict
 ```
 
-A health-check endpoint can also be used:
+### Health Check
 
 ```text
 GET /health
 ```
 
----
+### API Documentation
 
-## 🛡️ Data Validation
+When running locally, FastAPI provides interactive documentation at:
 
-The API validates incoming data before sending it to the Machine Learning model.
-
-This helps prevent invalid or unexpected values from reaching the prediction pipeline.
+```text
+/docs
+```
 
 ---
 
@@ -116,82 +143,81 @@ This helps prevent invalid or unexpected values from reaching the prediction pip
 
 The frontend is built using:
 
-* HTML
-* CSS
+* HTML5
+* CSS3
 * JavaScript
 
-Users can enter the required information through the web interface and receive the predicted mental health score.
+The interface allows users to enter:
 
-### Frontend workflow
+* Age
+* Gender
+* Country
+* Academic level
+* Most-used social media platform
+* Primary purpose of social media
+* Average daily screen time
+* Daily phone unlocks
+* Study hours
+* Physical activity
+* Sleep hours
+* Perceived stress level
 
-```text
-User Input
-    ↓
-HTML Form
-    ↓
-JavaScript fetch()
-    ↓
-FastAPI /predict
-    ↓
-Machine Learning Model
-    ↓
-Prediction
-    ↓
-Frontend Result
-```
+The frontend then sends the data to the FastAPI `/predict` endpoint.
 
 ---
 
-## 🔄 Complete Project Architecture
+## 🔄 Application Workflow
 
 ```text
-                    ┌─────────────────────┐
-                    │      User           │
-                    └──────────┬──────────┘
-                               │
-                               ▼
-                    ┌─────────────────────┐
-                    │ HTML / CSS / JS     │
-                    │     Frontend        │
-                    └──────────┬──────────┘
-                               │
-                         HTTP Request
-                               │
-                               ▼
-                    ┌─────────────────────┐
-                    │      FastAPI        │
-                    │      Backend        │
-                    └──────────┬──────────┘
-                               │
-                               ▼
-                    ┌─────────────────────┐
-                    │   Data Validation   │
-                    └──────────┬──────────┘
-                               │
-                               ▼
-                    ┌─────────────────────┐
-                    │   ML Model (.pkl)   │
-                    └──────────┬──────────┘
-                               │
-                               ▼
-                    ┌─────────────────────┐
-                    │ Mental Health Score │
-                    │     Prediction      │
-                    └─────────────────────┘
+                    👤 User
+                       │
+                       ▼
+              ┌─────────────────┐
+              │  HTML/CSS/JS    │
+              │    Frontend     │
+              └────────┬────────┘
+                       │
+                       │ POST /predict
+                       ▼
+              ┌─────────────────┐
+              │     FastAPI     │
+              │     Backend     │
+              └────────┬────────┘
+                       │
+                       ▼
+              ┌─────────────────┐
+              │ Data Validation │
+              └────────┬────────┘
+                       │
+                       ▼
+              ┌─────────────────┐
+              │  ML Model .pkl  │
+              └────────┬────────┘
+                       │
+                       ▼
+              ┌─────────────────┐
+              │ Mental Health   │
+              │ Score Prediction│
+              └────────┬────────┘
+                       │
+                       ▼
+              ┌─────────────────┐
+              │ Frontend Result │
+              └─────────────────┘
 ```
 
 ---
 
 ## 📊 Model Evaluation
 
-The Machine Learning model can be evaluated using regression metrics such as:
+The regression model can be evaluated using:
 
-* Mean Absolute Error (MAE)
-* Mean Squared Error (MSE)
-* Root Mean Squared Error (RMSE)
+* MAE — Mean Absolute Error
+* MSE — Mean Squared Error
+* RMSE — Root Mean Squared Error
 * R² Score
 
-These metrics help measure the prediction performance of the model.
+These metrics help evaluate how accurately the model predicts the target score.
 
 ---
 
@@ -222,6 +248,12 @@ These metrics help measure the prediction performance of the model.
 * CSS3
 * JavaScript
 
+### Deployment
+
+* GitHub
+* GitHub Pages
+* Render
+
 ### Development
 
 * Jupyter Notebook
@@ -235,25 +267,28 @@ These metrics help measure the prediction performance of the model.
 ```text
 Mental-Health-Score/
 │
-├── ML_Project.ipynb
-├── Student Social Media And Mental Health Impact.csv
-├── Mental_Health_Model.pkl
+├── Mental Health Score/
+│   ├── Student Mental Health Score.ipynb
+│   ├── Mental Health.csv
+│   ├── Mental_Health_Model.pkl
+│   │
+│   ├── main.py
+│   ├── requirements.txt
+│   │
+│   ├── index.html
+│   ├── style.css
+│   ├── script.js
+│   │
+│   └── ML Project.html
 │
-├── main.py
-├── requirements.txt
-│
-├── index.html
-├── style.css
-├── script.js
-│
-├── ML Project.html
 ├── README.md
+├── LICENSE
 └── .gitignore
 ```
 
 ---
 
-## 🚀 How To Run Locally
+## 🚀 Run Locally
 
 ### 1. Clone the repository
 
@@ -261,19 +296,25 @@ Mental-Health-Score/
 git clone https://github.com/haseebniazii/Mental-Health-Score.git
 ```
 
-### 2. Open the project directory
+### 2. Open the project
 
 ```bash
 cd Mental-Health-Score
 ```
 
-### 3. Create a virtual environment
+### 3. Enter the project folder
+
+```bash
+cd "Mental Health Score"
+```
+
+### 4. Create virtual environment
 
 ```bash
 python -m venv venv
 ```
 
-### 4. Activate the environment
+### 5. Activate virtual environment
 
 **Windows:**
 
@@ -281,64 +322,83 @@ python -m venv venv
 venv\Scripts\activate
 ```
 
-### 5. Install dependencies
+### 6. Install dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 6. Start FastAPI
+### 7. Start FastAPI
 
 ```bash
 uvicorn main:app --reload
 ```
 
-### 7. Open the application
+### 8. Open the application
 
-Open the local URL shown by Uvicorn in your browser.
+Open:
+
+```text
+http://127.0.0.1:8000
+```
+
+API documentation:
+
+```text
+http://127.0.0.1:8000/docs
+```
 
 ---
 
-## 📡 API Documentation
+## ☁️ Deployment Architecture
 
-Once the FastAPI server is running, interactive API documentation is available through:
-
-```text
-/docs
-```
-
-FastAPI automatically provides interactive API documentation for testing the endpoints.
-
----
-
-## ☁️ Deployment
-
-The application can be deployed as a web service using platforms such as **Render**.
-
-Deployment workflow:
+The frontend and backend can be deployed separately.
 
 ```text
-GitHub Repository
-       ↓
-    Render
-       ↓
-FastAPI Application
-       ↓
-Live Web Application
+                 GitHub
+                   │
+          ┌────────┴────────┐
+          │                 │
+          ▼                 ▼
+   GitHub Pages          Render
+          │                 │
+          ▼                 ▼
+     HTML/CSS/JS         FastAPI
+          │                 │
+          └────────┬────────┘
+                   │
+                   ▼
+              ML Model
+              (.pkl)
+                   │
+                   ▼
+          Mental Health Score
 ```
+
+### Frontend
+
+The static frontend is hosted on GitHub Pages:
+
+https://haseebniazii.github.io/Mental-Health-Score/
+
+### Backend
+
+The FastAPI backend can be deployed separately as a web service on Render.
 
 ---
 
 ## 🔮 Future Improvements
 
 * Improve model performance
-* Add more advanced Machine Learning models
+* Compare multiple ML algorithms
 * Perform additional hyperparameter tuning
-* Add authentication
-* Improve frontend UI/UX
 * Add prediction history
 * Add model performance dashboard
-* Deploy with a production-grade setup
+* Improve frontend UI/UX
+* Add authentication
+* Add database integration
+* Deploy the complete backend
+* Add more useful wellness insights
 
 ---
 
@@ -346,17 +406,24 @@ Live Web Application
 
 This project is created for **educational and Machine Learning demonstration purposes**.
 
-The predicted score should not be considered a medical diagnosis or professional mental-health assessment.
+The predicted score should **not** be considered a medical diagnosis, clinical assessment, or professional mental-health evaluation.
+
+If you are experiencing serious mental-health difficulties, consider speaking with a qualified healthcare professional or someone you trust.
 
 ---
 
 ## 👨‍💻 Author
 
-**Haseeb Khan**
+### Haseeb Khan
 
 GitHub:
+
 https://github.com/haseebniazii
 
 ---
 
-⭐ If you found this project useful, consider giving the repository a star!
+## ⭐ Support
+
+If you found this project useful, please consider giving the repository a ⭐ star.
+
+**Thank you for checking out the project!**
