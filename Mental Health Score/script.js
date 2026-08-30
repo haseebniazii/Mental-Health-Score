@@ -1,7 +1,7 @@
 (() => {
   "use strict";
 
-  const API_BASE = "https://mental-health-score-4a7545b9.fastapicloud.dev";
+  const API_BASE = "https://mental-health-score-2efc9e38.fastapicloud.dev/";
 
   const form = document.getElementById("predict-form");
   const submitBtn = document.getElementById("submit-btn");
